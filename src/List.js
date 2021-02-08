@@ -5,7 +5,7 @@ const List = ({ data }) => {
     <div className="main">
       <div className="card">
         <div className="initial">
-          <p>{data.firstName.charAt(0) + data.lastName.charAt(0)}</p>
+          <p>{data.firstName.charAt(0) + " " + data.lastName.charAt(0)}</p>
         </div>
         <h2>{data.firstName + data.lastName}</h2>
         <p>{data.designation}</p>
