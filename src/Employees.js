@@ -3,6 +3,10 @@ import firebase from "./services/firestore";
 let db = firebase.firestore();
 export const employeesRef = db.collection("employees");
 
+// teamRef.get().then((query) => {
+//   query.forEach((doc) => console.log(doc.data()));
+// });
+
 // employeesRef.get().then((query) => {
 //   query.forEach((doc) => console.log(doc.id));
 // });
@@ -14,7 +18,7 @@ export const employeesRef = db.collection("employees");
 //   designation: "Web Developer",
 // });
 
-// employeesRef.doc("A.Lamberton").set({
+// employeesRef.doc().set({
 //   firstName: "Adler",
 //   lastName: "Lamberton",
 //   email: "alamberton1@ft.com",

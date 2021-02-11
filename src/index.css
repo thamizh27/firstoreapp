@@ -2,6 +2,7 @@ body {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 input {
@@ -31,11 +32,18 @@ form {
 form button {
   display: block;
   margin-top: 2rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .initial {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   background-color: aqua;
   display: flex;
@@ -52,4 +60,55 @@ form button {
 }
 .main {
   display: inline-block;
+}
+.bottom-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottom-list button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.update-form-close {
+  display: none;
+}
+
+.update-form-show {
+  display: block;
+}
+
+.main form {
+  width: 100%;
+}
+
+.main form input {
+  margin: 1rem auto;
+}
+
+.main form button {
+  margin: auto;
+}
+
+.main-dropdown {
+  margin-top: 1rem;
+}
+
+.update-form-show h2 {
+  text-align: center;
+}
+
+select {
+  padding: 10px;
+}
+
+.second-main-dropdown {
+  display: block;
+  margin: auto;
 }
