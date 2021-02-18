@@ -112,3 +112,10 @@ select {
   display: block;
   margin: auto;
 }
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
