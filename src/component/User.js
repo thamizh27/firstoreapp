@@ -7,13 +7,13 @@ const User = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [designation, setDesignation] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState(null);
   const [email, setEmail] = useState("");
   const [list, setList] = useState([]);
   const [teams, setTeams] = useState([]);
-  const [front, setFront] = useState([]);
+  // const [front, setFront] = useState([]);
 
-  const departmentRef = "teams/";
+  const departmentRef = "/teams/";
 
   useEffect(() => {
     const unsubscribe = employeesRef
@@ -39,7 +39,7 @@ const User = () => {
         arr.push(datas);
       });
       setTeams(arr);
-      console.log(arr);
+      // console.log(arr);
     });
 
     return unsubscribe;
@@ -47,9 +47,6 @@ const User = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const dep = teamRef.doc().data;
-    console.log(dep, "hello");
 
     employeesRef.add({
       firstName: firstName,
@@ -59,6 +56,8 @@ const User = () => {
       email: email,
       teams: `${departmentRef}${department}`,
     });
+
+    console.log(department);
 
     // teamRef.add({
     //   title: department,
@@ -71,10 +70,6 @@ const User = () => {
     setDesignation("");
     setEmail("");
   };
-
-  // const frontend = list
-  //   .filter((item) => item.team === "frontend development")
-  //   .map((item) => <List data={item} key={item.id} />);
 
   return (
     <div>
@@ -107,7 +102,7 @@ const User = () => {
             className="main-dropdown"
             name="teams"
             value={department}
-            onChange={(e) => setDepartment(e.target.value)}
+            onChange={(e) => console.log(e.target.id)}
           >
             <option value="department">Department</option>
             <option value="frontend development">Frontend Development</option>
@@ -115,7 +110,10 @@ const User = () => {
             <option value="android development">Android Development</option>
             <option value="ios development">IOS Development</option>
           </select> */}
-          <Dropdown teams={teams} />
+          <Dropdown
+            teams={teams}
+            dropdownId={(depId) => setDepartment(depId)}
+          />
           <input
             type="text"
             value={designation}
