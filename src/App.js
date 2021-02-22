@@ -1,9 +1,10 @@
-import EmployeeList from "./component/EmployeeList";
-import User from "./component/User";
+import EmployeeList from "./component 2/EmployeeList";
+// import User from "./component/User";
 
 function App() {
   return (
     <div className="App">
+      {/* <User /> */}
       <EmployeeList />
     </div>
   );

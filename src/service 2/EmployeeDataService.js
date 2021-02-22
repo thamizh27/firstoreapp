@@ -1,4 +1,4 @@
-import firebase from "./firestore";
+import firebase from "../service/firestore";
 
 export const db = firebase.database().ref("employees");
 

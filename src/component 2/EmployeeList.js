@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../service/EmployeeDataService";
+import { db } from "../service 2/EmployeeDataService";
 import FirebaseList from "./FirebaseList";
 
 const EmployeeList = () => {

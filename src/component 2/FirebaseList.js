@@ -1,4 +1,4 @@
-import { db } from "../service/EmployeeDataService";
+import { db } from "../service 2/EmployeeDataService";
 
 const FirebaseList = ({ item }) => {
   const handleDelete = () => {
