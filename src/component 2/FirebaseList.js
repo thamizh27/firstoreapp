@@ -1,4 +1,5 @@
 import { db } from "../service 2/EmployeeDataService";
+import { FaPen, FaTrash } from "react-icons/fa";
 
 const FirebaseList = ({ item }) => {
   const handleDelete = () => {
@@ -8,13 +9,13 @@ const FirebaseList = ({ item }) => {
   };
 
   const handleEdit = () => {
-    const firstName = prompt("Firstname : ");
-    const lastName = prompt("Lastname : ");
-    const mobile = prompt("Mobile Number: ");
-    const email = prompt("Email : ");
-    const okay = window.confirm("Confirm or Deny");
+    const firstName = prompt("Firstname : ", item.firstName);
+    const lastName = prompt("Lastname : ", item.lastName);
+    const mobile = prompt("Mobile Number: ", item.mobile);
+    const email = prompt("Email : ", item.email);
+    const handleConfirm = window.confirm("Confirm or Deny");
 
-    if (okay === true) {
+    if (handleConfirm === true) {
       db.child(item.id).update({
         firstName: firstName,
         lastName: lastName,
@@ -33,14 +34,14 @@ const FirebaseList = ({ item }) => {
           <td>{item.email}</td>
           <td>{item.mobile}</td>
           <td>
-            <button className="action" onClick={handleEdit}>
-              Edit
-            </button>
+            <div className="action" onClick={handleEdit}>
+              <FaPen />
+            </div>
           </td>
           <td>
-            <button className="action" onClick={handleDelete}>
-              Delete
-            </button>
+            <div className="action" onClick={handleDelete}>
+              <FaTrash />
+            </div>
           </td>
         </tr>
       </tbody>
