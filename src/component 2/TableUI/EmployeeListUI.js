@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../service 2/EmployeeDataService";
-import FirebaseList from "./FirebaseList";
-import { BsFillGridFill, BsListUl } from "react-icons/bs";
-
+import React, { useState, useContext } from "react";
+import { db } from "../../service 2/EmployeeDataService";
+import { EmployeeContext } from "../../context 2/EmployeeProvider";
+import EmployeeTable from "./EmployeeTable";
+import NavBar from "../NavBar";
 // Meterial UI components
 import {
   TextField,
@@ -13,30 +13,11 @@ import {
 } from "@material-ui/core";
 
 const EmployeeListUI = () => {
+  const [employeeList, loading] = useContext(EmployeeContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
-  const [employeeList, setEmployeeList] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // let db = EmployeeDataService.getAll();
-    setLoading(true);
-    db.on("value", (snapshot) => {
-      const data = [];
-      snapshot.forEach((childSnapshot) => {
-        const childKey = childSnapshot.key;
-        const childData = childSnapshot.val();
-
-        childData.id = childKey;
-        data.push(childData);
-      });
-      setEmployeeList(data);
-      setLoading(false);
-      console.log(data);
-    });
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,7 +98,6 @@ const EmployeeListUI = () => {
               onChange={(e) => setEmail(e.target.value)}
               label="Email"
             />
-            {/* <button type="submit">Submit</button> */}
             <Button
               type="submit"
               size="medium"
@@ -129,47 +109,12 @@ const EmployeeListUI = () => {
           </FormControl>
         </form>
       </Container>
-
-      <Container component="div" maxWidth="xs">
-        <Button size="large">
-          <BsFillGridFill />
-        </Button>
-        <Button size="large">
-          <BsListUl />
-        </Button>
-      </Container>
+      <NavBar />
       {loading ? (
-        <h2 style={{ textAlign: "center" }}>Loading...</h2>
+        <h2 style={{ textAlign: "center" }}>Loading... Please wait...</h2>
       ) : (
-        <div className="table-div">
-          <table>
-            <thead>
-              <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Mobile Number</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            {employeeList.map((item) => (
-              <FirebaseList
-                key={item.id}
-                item={item}
-                firstName={firstName}
-                lastName={lastName}
-                email={email}
-                mobile={mobile}
-              />
-            ))}
-          </table>
-        </div>
+        <EmployeeTable employeeList={employeeList} />
       )}
-
-      {/* {employeeList.map((item) => (
-        <div>{item.id}</div>
-      ))} */}
     </Container>
   );
 };

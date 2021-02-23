@@ -21,16 +21,16 @@ export const UserProvider = (props) => {
         console.log(items);
       });
 
-    teamRef.onSnapshot((query) => {
-      let arr = [];
-      query.forEach((doc) => {
-        const datas = doc.data();
-        datas.id = doc.id;
-        arr.push(datas);
-      });
-      setTeams(arr);
-      console.log(arr);
-    });
+    // teamRef.onSnapshot((query) => {
+    //   let arr = [];
+    //   query.forEach((doc) => {
+    //     const datas = doc.data();
+    //     datas.id = doc.id;
+    //     arr.push(datas);
+    //   });
+    //   setTeams(arr);
+    //   console.log(arr);
+    // });
 
     return unsubscribe;
   }, []);
