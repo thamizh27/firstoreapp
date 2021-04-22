@@ -112,6 +112,10 @@ const EmployeeGridUI = () => {
       <NavBar />
       {loading ? (
         <h2 style={{ textAlign: "center" }}>Loading... Please wait...</h2>
+      ) : employeeList.length === 0 ? (
+        <h2 style={{ textAlign: "center" }}>
+          There's no employee data in database. Please add employee...
+        </h2>
       ) : (
         <EmployeeGrid employeeList={employeeList} />
       )}
